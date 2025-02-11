@@ -1,0 +1,31 @@
+class Document:
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+        self.paragraphs = []
+
+    def add_paragraph(self, text):
+        self.paragraphs.append(text)
+
+    def remove_paragraph(self, index):
+        if 0 <= index < len(self.paragraphs):
+            del self.paragraphs[index]
+        else:
+            print("Nieprawidłowy indeks paragrafu.")
+
+    def replace_paragraph(self, index, text):
+        if 0 <= index < len(self.paragraphs):
+            self.paragraphs[index] = text
+        else:
+            print("Nieprawidłowy indeks paragrafu.")
+
+    def display(self):
+        print(f"Tytuł: {self.title}\nAutor: {self.author}\n")
+        for i, paragraph in enumerate(self.paragraphs, 1):
+            print(f"{i}. {paragraph}\n")
+
+    def reset_document(self, title, author):
+        """Tworzy nowy dokument, resetując obecny."""
+        self.title = title
+        self.author = author
+        self.paragraphs = []
