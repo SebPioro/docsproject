@@ -5,19 +5,17 @@ class Document:
         self.paragraphs = []
 
     def add_paragraph(self, text):
+''' dodaj index 0 [-1 to jest ostatnia]; zmień paragrapj na object'''
         self.paragraphs.append(text)
 
     def remove_paragraph(self, index):
         if 0 <= index < len(self.paragraphs):
             del self.paragraphs[index]
-        else:
-            print("Nieprawidłowy indeks paragrafu.")
+''' zamiast printów rzucać wyjątki - poczytać o wyjątkach'''
 
     def replace_paragraph(self, index, text):
         if 0 <= index < len(self.paragraphs):
             self.paragraphs[index] = text
-        else:
-            print("Nieprawidłowy indeks paragrafu.")
 
     def display(self):
         print(f"Tytuł: {self.title}\nAutor: {self.author}\n")
@@ -25,7 +23,6 @@ class Document:
             print(f"{i}. {paragraph}\n")
 
     def reset_document(self, title, author):
-        """Tworzy nowy dokument, resetując obecny."""
         self.title = title
         self.author = author
         self.paragraphs = []
