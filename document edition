@@ -4,25 +4,43 @@ class Document:
         self.author = author
         self.paragraphs = []
 
-    def add_paragraph(self, text):
+    def add_paragraph(self, paragraph):
 ''' dodaj index 0 [-1 to jest ostatnia]; zmień paragrapj na object'''
-        self.paragraphs.append(text)
-
+         self.paragraphs.append(paragraph)
+'''clasa pafragraf'''
+       
     def remove_paragraph(self, index):
         if 0 <= index < len(self.paragraphs):
             del self.paragraphs[index]
-''' zamiast printów rzucać wyjątki - poczytać o wyjątkach'''
+        else:
+            raise IndexError("Invalid paragraph index.")
+''' zamiast printów rzucać wyjątki - poczytać o wyjątkach'''   
+''' zamiast index error - błąd dodania paragrafu, albo application error-> error code i error text'''
 
-    def replace_paragraph(self, index, text):
+    def replace_paragraph(self, index, paragraph):
         if 0 <= index < len(self.paragraphs):
-            self.paragraphs[index] = text
+            self.paragraphs[index] = paragraph
+        else:
+            raise IndexError("Invalid paragraph index.")
+
+    def __str__ (self):
+        text = f"Tytuł: {self.title}\nAutor: {self.author}\n"
+        for i, paragraph in enumerate(self.paragraphs, 1):
+            text = text + f"{i}. {str(paragraph)}\n"
 
     def display(self):
-        print(f"Tytuł: {self.title}\nAutor: {self.author}\n")
-        for i, paragraph in enumerate(self.paragraphs, 1):
-            print(f"{i}. {paragraph}\n")
+        print (str(self))
 
     def reset_document(self, title, author):
         self.title = title
         self.author = author
         self.paragraphs = []
+
+class Paragraph:
+    """Class representing a paragraph in a document."""
+    def __init__(self, text):
+        self.text = text
+
+    def __str__(self):
+        return self.text
+
