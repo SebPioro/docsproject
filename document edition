@@ -1,21 +1,21 @@
-class Document:
+    class Document:
     def __init__(self, title, author):
         self.title = title
         self.author = author
         self.paragraphs = []
 
     def add_paragraph(self, paragraph):
-''' dodaj index 0 [-1 to jest ostatnia]; zmień paragrapj na object'''
-         self.paragraphs.append(paragraph)
-'''clasa pafragraf'''
+        ''' dodaj index 0 [-1 to jest ostatnia]; zmień paragrapj na object'''
+        self.paragraphs.append(paragraph)
+        '''clasa pafragraf'''
        
     def remove_paragraph(self, index):
         if 0 <= index < len(self.paragraphs):
             del self.paragraphs[index]
         else:
             raise IndexError("Invalid paragraph index.")
-''' zamiast printów rzucać wyjątki - poczytać o wyjątkach'''   
-''' zamiast index error - błąd dodania paragrafu, albo application error-> error code i error text'''
+        ''' zamiast printów rzucać wyjątki - poczytać o wyjątkach'''   
+        ''' zamiast index error - błąd dodania paragrafu, albo application error-> error code i error text'''
 
     def replace_paragraph(self, index, paragraph):
         if 0 <= index < len(self.paragraphs):
